@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { NODES, NODE_BY_ID } from "@/data/ecosystem";
-import { METRICS, RANKED } from "@/utils/graphAnalysis";
+import { NODES, nodeOf } from "@/data/ecosystem";
+import { metricsOf, RANKED } from "@/utils/graphAnalysis";
 import { TYPE_COLOR, COLORS } from "@/lib/colors";
 import { PageHeader } from "@/components/layout/Header";
 import { StatsBar } from "@/components/Dashboard/StatsBar";

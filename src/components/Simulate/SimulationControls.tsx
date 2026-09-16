@@ -1,6 +1,6 @@
 import { Play, RotateCcw } from "lucide-react";
-import { NODES, NODE_BY_ID } from "@/data/ecosystem";
-import { METRICS } from "@/utils/graphAnalysis";
+import { NODES, nodeOf } from "@/data/ecosystem";
+import { metricsOf } from "@/utils/graphAnalysis";
 import { TypeBadge, RiskBadge } from "@/components/shared/Badge";
 import type { SimSpeed } from "@/utils/simulation";
 

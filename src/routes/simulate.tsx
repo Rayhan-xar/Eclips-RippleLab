@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { NODE_BY_ID } from "@/data/ecosystem";
+import { nodeOf } from "@/data/ecosystem";
 import { TYPE_COLOR, COLORS } from "@/lib/colors";
 import { PageHeader } from "@/components/layout/Header";
 import { RippleGraph, GraphLegend } from "@/components/graph/RippleGraph";

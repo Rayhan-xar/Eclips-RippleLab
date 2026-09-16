@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { NODES, NODE_BY_ID, alternativeFor } from "@/data/ecosystem";
+import { NODES, nodeOf, alternativeFor } from "@/data/ecosystem";
 import { PageHeader } from "@/components/layout/Header";
 import { StrategyCard } from "@/components/Compare/StrategyCard";
 import { ComparisonTable } from "@/components/Compare/ComparisonTable";

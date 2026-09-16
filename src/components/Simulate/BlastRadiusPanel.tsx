@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { ArrowRight, Radar } from "lucide-react";
-import { NODE_BY_ID, APPLICATIONS } from "@/data/ecosystem";
-import { METRICS, type BlastRadius } from "@/utils/graphAnalysis";
+import { nodeOf, APPLICATIONS } from "@/data/ecosystem";
+import { metricsOf, type BlastRadius } from "@/utils/graphAnalysis";
 import { TypeBadge } from "@/components/shared/Badge";
 import { COLORS } from "@/lib/colors";
 

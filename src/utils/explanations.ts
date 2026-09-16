@@ -1,7 +1,7 @@
-import { APPLICATIONS, EDGES, NODES, NODE_BY_ID, alternativeFor } from "@/data/ecosystem";
+import { APPLICATIONS, EDGES, NODES, nodeOf, alternativeFor } from "@/data/ecosystem";
 import {
   CRITICAL,
-  METRICS,
+  metricsOf,
   RANKED,
   computeBlastRadius,
   orphanedBy,

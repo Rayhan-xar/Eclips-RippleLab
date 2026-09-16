@@ -1,4 +1,4 @@
-import { APPLICATIONS, NODES, NODE_BY_ID } from "@/data/ecosystem";
+import { APPLICATIONS, NODES, nodeOf } from "@/data/ecosystem";
 import { computeBlastRadius } from "@/utils/graphAnalysis";
 
 const PACKAGES = NODES.filter((n) => n.type !== "application");

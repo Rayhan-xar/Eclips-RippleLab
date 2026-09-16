@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Maximize2 } from "lucide-react";
-import { EDGES, NODES, NODE_BY_ID } from "@/data/ecosystem";
-import { METRICS } from "@/utils/graphAnalysis";
+import { EDGES, NODES, nodeOf } from "@/data/ecosystem";
+import { metricsOf } from "@/utils/graphAnalysis";
 
 export interface RippleGraphProps {
   colorFor: (id: string) => string;

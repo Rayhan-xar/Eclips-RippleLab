@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Zap, X } from "lucide-react";
-import { NODE_BY_ID } from "@/data/ecosystem";
-import { METRICS } from "@/utils/graphAnalysis";
+import { nodeOf } from "@/data/ecosystem";
+import { metricsOf } from "@/utils/graphAnalysis";
 import { RippleScoreGauge } from "@/components/shared/RippleScoreGauge";
 import { TypeBadge, RiskBadge } from "@/components/shared/Badge";
 import { setTarget } from "@/store/appStore";
