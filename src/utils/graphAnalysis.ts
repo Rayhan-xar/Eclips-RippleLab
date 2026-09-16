@@ -139,12 +139,12 @@ function computeAll(): Record<string, PackageMetrics> {
     const reached = reverseBfs(n.id);
     out[n.id] = {
       node: n,
-      degree: deg[n.id],
-      betweenness: btw[n.id],
-      reach: rawReach[n.id],
-      rippleScore: alpha * deg[n.id] + beta * btw[n.id] + gamma * rawReach[n.id],
-      directDependents: INDEX.dependents[n.id],
-      directDependencies: INDEX.dependencies[n.id],
+      degree: deg[n.id]!,
+      betweenness: btw[n.id]!,
+      reach: rawReach[n.id]!,
+      rippleScore: alpha * deg[n.id]! + beta * btw[n.id]! + gamma * rawReach[n.id]!,
+      directDependents: INDEX.dependents[n.id]!,
+      directDependencies: INDEX.dependencies[n.id]!,
       downstreamCount: reached.size - 1,
     };
   }
