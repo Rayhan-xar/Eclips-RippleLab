@@ -9,7 +9,7 @@ type SortKey = "name" | "type" | "depth" | "score";
 
 function DonutBreakdown({ blast }: { blast: BlastRadius }) {
   const counts = { application: 0, library: 0, foundational: 0 } as Record<string, number>;
-  for (const id of blast.affected) counts[nodeOf(id).type] += 1;
+  for (const id of blast.affected) counts[nodeOf(id).type] = (counts[nodeOf(id).type] ?? 0) + 1;
   const total = blast.affected.length || 1;
 
   const segments = [
@@ -26,7 +26,7 @@ function DonutBreakdown({ blast }: { blast: BlastRadius }) {
     <div className="flex items-center gap-5">
       <svg width={110} height={110} className="-rotate-90">
         {segments.map((s) => {
-          const frac = counts[s.key] / total;
+          const frac = (counts[s.key] ?? 0) / total;
           const dash = `${frac * c} ${c}`;
           const el = (
             <circle

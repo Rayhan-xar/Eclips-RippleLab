@@ -58,7 +58,7 @@ export function RiskHeatMap() {
                     <td key={i} className="px-0.5 py-0.5">
                       <div
                         className={`flex h-7 w-9 items-center justify-center rounded ${c.cls} font-mono text-[10px]`}
-                        title={`${nodeOf(row.id).name} → ${APPLICATIONS[i].name}: ${
+                        title={`${nodeOf(row.id).name} → ${APPLICATIONS[i]?.name}: ${
                           d === null ? "not on path" : `${d} hops`
                         }`}
                       >

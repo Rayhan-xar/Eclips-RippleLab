@@ -16,7 +16,7 @@ function nameOf(id: string) {
 }
 
 export function executiveSummary(): string {
-  const top = RANKED[0];
+  const top = RANKED[0]!;
   const blast = computeBlastRadius(top.node.id);
   return `This dependency ecosystem contains ${NODES.length} packages serving ${APPLICATIONS.length} applications through ${EDGES.length} dependency relationships. Analysis identified ${CRITICAL.length} critical chokepoint${CRITICAL.length === 1 ? "" : "s"} with Ripple Scores above 0.70. The most critical package is ${top.node.name} (Ripple Score: ${top.rippleScore.toFixed(2)}), which sits on the dependency path of ${blast.affectedApps.length} of ${APPLICATIONS.length} applications. A single compromise of ${top.node.name} would expose ${blast.exposurePct.toFixed(0)}% of the ecosystem across ${blast.maxDepth} propagation levels.`;
 }
@@ -44,7 +44,7 @@ export function mitigationPriorities(): string[] {
   const top3 = RANKED.slice(0, 3).map((m) => m.node.name);
   return [
     `Establish vendor and advisory monitoring for ${top3.join(", ")} — these carry the highest Ripple Scores in the graph.`,
-    `Evaluate audited alternatives for every package scoring above 0.70 (${CRITICAL.length} today), starting with ${RANKED[0].node.name} → ${alternativeFor(RANKED[0].node.id)}.`,
+    `Evaluate audited alternatives for every package scoring above 0.70 (${CRITICAL.length} today), starting with ${RANKED[0]!.node.name} → ${alternativeFor(RANKED[0]!.node.id)}.`,
     "Implement strict dependency pinning and lockfile integrity checks for all foundational packages.",
     "Add runtime integrity verification (Sigstore / provenance attestation) for packages on the critical propagation paths.",
     "Rehearse the isolation playbook quarterly so containment does not orphan production services unexpectedly.",

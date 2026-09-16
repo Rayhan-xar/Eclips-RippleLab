@@ -5,12 +5,12 @@ import { metricsOf } from "@/utils/graphAnalysis";
 
 export interface RippleGraphProps {
   colorFor: (id: string) => string;
-  dimFor?: (id: string) => boolean;
-  edgeStateFor?: (dependencyId: string, dependentId: string) => "active" | "normal" | "dim";
-  pulseIds?: Set<string>;
-  selectedId?: string | null;
-  onSelect?: (id: string | null) => void;
-  height?: number;
+  dimFor?: ((id: string) => boolean) | undefined;
+  edgeStateFor?: ((dependencyId: string, dependentId: string) => "active" | "normal" | "dim") | undefined;
+  pulseIds?: Set<string> | undefined;
+  selectedId?: string | null | undefined;
+  onSelect?: ((id: string | null) => void) | undefined;
+  height?: number | undefined;
 }
 
 interface GNode {
