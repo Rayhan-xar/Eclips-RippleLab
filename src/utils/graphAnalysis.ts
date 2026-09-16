@@ -182,7 +182,7 @@ export function computeBlastRadius(id: string, index: GraphIndex = INDEX): Blast
   const maxDepth = Math.max(0, ...depthById.values());
 
   const levels: string[][] = Array.from({ length: maxDepth + 1 }, () => []);
-  for (const [nodeId, d] of depthById) levels[d].push(nodeId);
+  for (const [nodeId, d] of depthById) levels[d]!.push(nodeId);
 
   const affectedSet = new Set(depthById.keys());
   const affectedEdges = EDGES.filter(
