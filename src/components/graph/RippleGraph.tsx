@@ -205,8 +205,10 @@ export function RippleGraph({
           onNodeHover={(node: any) => setHoverId(node?.id ?? null)}
           onNodeClick={(node: any) => onSelect?.(node.id)}
           onBackgroundClick={() => onSelect?.(null)}
-          cooldownTicks={120}
-          d3VelocityDecay={0.3}
+          cooldownTicks={200}
+          d3VelocityDecay={0.28}
+          d3AlphaDecay={0.018}
+          onEngineStop={() => fgRef.current?.zoomToFit(500, 50)}
         />
       ) : (
         <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
