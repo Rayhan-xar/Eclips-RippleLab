@@ -75,29 +75,29 @@ export function betweennessAll(index: GraphIndex = INDEX): Record<string, number
       const v = queue.shift()!;
       stack.push(v);
       for (const w of index.dependents[v] ?? []) {
-        if (dist[w] < 0) {
-          dist[w] = dist[v] + 1;
+        if (dist[w]! < 0) {
+          dist[w] = dist[v]! + 1;
           queue.push(w);
         }
-        if (dist[w] === dist[v] + 1) {
-          sigma[w] += sigma[v];
-          preds[w].push(v);
+        if (dist[w] === dist[v]! + 1) {
+          sigma[w] = sigma[w]! + sigma[v]!;
+          preds[w]!.push(v);
         }
       }
     }
     const delta: Record<string, number> = Object.fromEntries(ids.map((i) => [i, 0]));
     while (stack.length) {
       const w = stack.pop()!;
-      for (const v of preds[w]) {
-        delta[v] += (sigma[v] / sigma[w]) * (1 + delta[w]);
+      for (const v of preds[w]!) {
+        delta[v] = delta[v]! + (sigma[v]! / sigma[w]!) * (1 + delta[w]!);
       }
-      if (w !== s) cb[w] += delta[w];
+      if (w !== s) cb[w] = cb[w]! + delta[w]!;
     }
   }
 
   const n = ids.length;
   const norm = (n - 1) * (n - 2);
-  for (const id of ids) cb[id] = norm > 0 ? cb[id] / norm : 0;
+  for (const id of ids) cb[id] = norm > 0 ? cb[id]! / norm : 0;
   return cb;
 }
 
