@@ -9,7 +9,7 @@ type SortKey = "name" | "type" | "depth" | "score";
 
 function DonutBreakdown({ blast }: { blast: BlastRadius }) {
   const counts = { application: 0, library: 0, foundational: 0 } as Record<string, number>;
-  for (const id of blast.affected) counts[NODE_BY_ID[id].type] += 1;
+  for (const id of blast.affected) counts[nodeOf(id).type] += 1;
   const total = blast.affected.length || 1;
 
   const segments = [
@@ -60,15 +60,15 @@ function DonutBreakdown({ blast }: { blast: BlastRadius }) {
 
 export function BlastRadiusPanel({ blast }: { blast: BlastRadius }) {
   const [sort, setSort] = useState<SortKey>("depth");
-  const compromised = NODE_BY_ID[blast.compromised];
+  const compromised = nodeOf(blast.compromised);
 
   const rows = useMemo(() => {
     const list = blast.affected.map((id) => ({
       id,
-      name: NODE_BY_ID[id].name,
-      type: NODE_BY_ID[id].type,
+      name: nodeOf(id).name,
+      type: nodeOf(id).type,
       depth: blast.depthById.get(id) ?? 0,
-      score: METRICS[id].rippleScore,
+      score: metricsOf(id).rippleScore,
     }));
     return list.sort((a, b) => {
       if (sort === "name") return a.name.localeCompare(b.name);
@@ -109,7 +109,7 @@ export function BlastRadiusPanel({ blast }: { blast: BlastRadius }) {
                 key={id}
                 className="rounded-md border border-critical/30 bg-critical/10 px-2 py-1 font-mono text-[11px] text-critical"
               >
-                {NODE_BY_ID[id].name}
+                {nodeOf(id).name}
               </span>
             ))}
           </div>
@@ -135,7 +135,7 @@ export function BlastRadiusPanel({ blast }: { blast: BlastRadius }) {
                   <span key={id} className="flex items-center gap-1.5">
                     {i > 0 && <ArrowRight className="size-3 text-muted-foreground" />}
                     <span className={i === 0 ? "text-critical" : "text-foreground"}>
-                      {NODE_BY_ID[id].name}
+                      {nodeOf(id).name}
                     </span>
                   </span>
                 ))}

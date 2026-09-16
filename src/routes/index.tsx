@@ -43,7 +43,7 @@ function Dashboard() {
 
   const colorFor = (id: string) => {
     if (selected === id) return COLORS.highlight;
-    return TYPE_COLOR[NODE_BY_ID[id].type];
+    return TYPE_COLOR[nodeOf(id).type];
   };
 
   const dimFor = (id: string) => (matches ? !matches.has(id) : false);
@@ -132,8 +132,8 @@ function Dashboard() {
                     className="w-full rounded-lg border border-border bg-background/40 px-3 py-2 text-left text-xs transition-colors hover:border-safe/40"
                   >
                     Inspect{" "}
-                    <span className="font-mono text-foreground">{NODE_BY_ID[id].name}</span> —
-                    score {(METRICS[id].rippleScore * 100).toFixed(0)}
+                    <span className="font-mono text-foreground">{nodeOf(id).name}</span> —
+                    score {(metricsOf(id).rippleScore * 100).toFixed(0)}
                   </button>
                 ))}
               </div>

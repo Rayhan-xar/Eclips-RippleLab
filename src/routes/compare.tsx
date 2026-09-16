@@ -30,7 +30,7 @@ export const Route = createFileRoute("/compare")({
 function ComparePage() {
   const { targetId, lastSimulatedId } = useAppState();
   const id = lastSimulatedId ?? targetId;
-  const node = NODE_BY_ID[id];
+  const node = nodeOf(id);
   const metrics = strategyMetrics(id);
   const rec = recommendation(id);
   const blast = computeBlastRadius(id);

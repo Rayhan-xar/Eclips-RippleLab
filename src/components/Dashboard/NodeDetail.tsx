@@ -21,7 +21,7 @@ function List({ title, ids }: { title: string; ids: string[] }) {
               key={id}
               className="rounded-md border border-border bg-background/50 px-2 py-1 font-mono text-[11px]"
             >
-              {NODE_BY_ID[id].name}
+              {nodeOf(id).name}
             </span>
           ))
         )}
@@ -31,8 +31,8 @@ function List({ title, ids }: { title: string; ids: string[] }) {
 }
 
 export function NodeDetail({ id, onClose }: { id: string; onClose: () => void }) {
-  const node = NODE_BY_ID[id];
-  const m = METRICS[id];
+  const node = nodeOf(id);
+  const m = metricsOf(id);
 
   return (
     <div className="glass fade-up sticky top-8 rounded-2xl p-5">

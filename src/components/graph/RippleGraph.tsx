@@ -87,7 +87,7 @@ export function RippleGraph({
 
   const drawNode = useCallback(
     (node: any, ctx: CanvasRenderingContext2D, scale: number) => {
-      const metrics = METRICS[node.id];
+      const metrics = metricsOf(node.id);
       const base = 4 + metrics.rippleScore * 9;
       const dim = dimFor?.(node.id) ?? false;
       const isHover = hoverId === node.id;
@@ -178,8 +178,8 @@ export function RippleGraph({
             ctx.fill();
           }}
           nodeLabel={(node: any) => {
-            const m = METRICS[node.id];
-            const n = NODE_BY_ID[node.id];
+            const m = metricsOf(node.id);
+            const n = nodeOf(node.id);
             return `<div style="background:#0f172a;border:1px solid rgba(255,255,255,.14);padding:8px 10px;border-radius:10px;font-family:Inter,sans-serif;color:#e2e8f0;font-size:12px">
               <strong>${n.name}</strong> <span style="color:#94a3b8">v${n.version}</span><br/>
               <span style="color:#94a3b8;text-transform:capitalize">${n.type}</span><br/>

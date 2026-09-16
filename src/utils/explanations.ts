@@ -12,7 +12,7 @@ function pct(n: number) {
 }
 
 function nameOf(id: string) {
-  return NODE_BY_ID[id].name;
+  return nodeOf(id).name;
 }
 
 export function executiveSummary(): string {
@@ -22,7 +22,7 @@ export function executiveSummary(): string {
 }
 
 export function recommendedAction(id: string): string {
-  const score = METRICS[id].rippleScore;
+  const score = metricsOf(id).rippleScore;
   if (score > 0.7) return "Replace or vendor-pin immediately";
   if (score > 0.45) return "Pin version + monitor advisories";
   if (score > 0.2) return "Monitor advisories";
@@ -30,7 +30,7 @@ export function recommendedAction(id: string): string {
 }
 
 export function packageNarrative(id: string): string {
-  const m = METRICS[id];
+  const m = metricsOf(id);
   const n = m.node;
   const blast = computeBlastRadius(id);
   const dependents = m.directDependents.map(nameOf);
@@ -61,7 +61,7 @@ export interface StrategyMetrics {
 
 export function strategyMetrics(id: string): Record<"patch" | "isolate" | "replace", StrategyMetrics> {
   const orphans = orphanedBy(id);
-  const dependents = METRICS[id].directDependents.length;
+  const dependents = metricsOf(id).directDependents.length;
   return {
     patch: {
       disruption: "Low",
@@ -88,8 +88,8 @@ export function strategyMetrics(id: string): Record<"patch" | "isolate" | "repla
 }
 
 export function recommendation(id: string): { strategy: string; text: string } {
-  const n = NODE_BY_ID[id];
-  const m = METRICS[id];
+  const n = nodeOf(id);
+  const m = metricsOf(id);
   const orphans = orphanedBy(id);
   const alt = alternativeFor(id);
 

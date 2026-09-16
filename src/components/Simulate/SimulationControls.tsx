@@ -23,8 +23,8 @@ export function SimulationControls({
   onReset: () => void;
   running: boolean;
 }) {
-  const node = NODE_BY_ID[targetId];
-  const m = METRICS[targetId];
+  const node = nodeOf(targetId);
+  const m = metricsOf(targetId);
 
   const grouped = {
     Applications: NODES.filter((n) => n.type === "application"),

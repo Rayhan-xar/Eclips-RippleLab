@@ -50,7 +50,7 @@ export function RiskHeatMap() {
             {matrix.map((row) => (
               <tr key={row.id}>
                 <td className="sticky left-0 bg-surface/90 px-2 py-1 font-mono">
-                  {NODE_BY_ID[row.id].name}
+                  {nodeOf(row.id).name}
                 </td>
                 {row.cells.map((d, i) => {
                   const c = cellFor(d);
@@ -58,7 +58,7 @@ export function RiskHeatMap() {
                     <td key={i} className="px-0.5 py-0.5">
                       <div
                         className={`flex h-7 w-9 items-center justify-center rounded ${c.cls} font-mono text-[10px]`}
-                        title={`${NODE_BY_ID[row.id].name} → ${APPLICATIONS[i].name}: ${
+                        title={`${nodeOf(row.id).name} → ${APPLICATIONS[i].name}: ${
                           d === null ? "not on path" : `${d} hops`
                         }`}
                       >

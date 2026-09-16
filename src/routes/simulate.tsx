@@ -47,7 +47,7 @@ function SimulatePage() {
   }, [state]);
 
   const colorFor = (id: string) => {
-    if (!active) return TYPE_COLOR[NODE_BY_ID[id].type];
+    if (!active) return TYPE_COLOR[nodeOf(id).type];
     if (id === state.blast!.compromised) return COLORS.critical;
     const d = revealed.get(id);
     if (d === undefined) return COLORS.muted;

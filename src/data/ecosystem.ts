@@ -136,3 +136,9 @@ export const ALTERNATIVES: Record<string, string> = {
 export function alternativeFor(id: string): string {
   return ALTERNATIVES[id] ?? "a vetted, audited fork";
 }
+
+export function nodeOf(id: string): EcoNode {
+  const n = NODE_BY_ID[id];
+  if (!n) throw new Error(`Unknown package: ${id}`);
+  return n;
+}

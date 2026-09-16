@@ -248,3 +248,9 @@ export const STATS = {
   edges: EDGES.length,
   critical: CRITICAL.length,
 };
+
+export function metricsOf(id: string): PackageMetrics {
+  const m = METRICS[id];
+  if (!m) throw new Error(`Unknown package: ${id}`);
+  return m;
+}
