@@ -15,8 +15,8 @@ export function buildIndex(): GraphIndex {
     dependencies[n.id] = [];
   }
   for (const e of EDGES) {
-    dependencies[e.source].push(e.target);
-    dependents[e.target].push(e.source);
+    dependencies[e.source]!.push(e.target);
+    dependents[e.target]!.push(e.source);
   }
   return { dependents, dependencies };
 }
