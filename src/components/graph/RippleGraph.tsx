@@ -64,6 +64,16 @@ export function RippleGraph({
     return () => ro.disconnect();
   }, [height]);
 
+  // spread the layout out so the ecosystem fills the canvas
+  useEffect(() => {
+    if (!FG) return;
+    const fg = fgRef.current;
+    if (!fg) return;
+    fg.d3Force("charge")?.strength(-420).distanceMax(600);
+    fg.d3Force("link")?.distance(70);
+    fg.d3ReheatSimulation?.();
+  }, [FG]);
+
   // drives the pulsing halo redraw
   useEffect(() => {
     if (!pulseIds || pulseIds.size === 0) return;
