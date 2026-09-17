@@ -157,30 +157,7 @@ export const RANKED: PackageMetrics[] = Object.values(METRICS).sort(
   (a, b) => b.rippleScore - a.rippleScore,
 );
 
-export const CRITICAL: PackageMetrics[] = RANKED.filter((m) => m.rippleScore > 0.7);
-
-/**
- * Recompute every derived view in place after the live ecosystem is swapped.
- * All consumers hold the same object references, so they simply re-render.
- */
-export function recomputeAnalysis() {
-  const fresh = buildIndex();
-  INDEX.dependents = fresh.dependents;
-  INDEX.dependencies = fresh.dependencies;
-
-  const metrics = computeAll();
-  for (const key of Object.keys(METRICS)) delete METRICS[key];
-  Object.assign(METRICS, metrics);
-
-  const ranked = Object.values(METRICS).sort((a, b) => b.rippleScore - a.rippleScore);
-  RANKED.splice(0, RANKED.length, ...ranked);
-  CRITICAL.splice(0, CRITICAL.length, ...ranked.filter((m) => m.rippleScore > 0.7));
-
-  STATS.totalPackages = NODES.length;
-  STATS.applications = APPLICATIONS.length;
-  STATS.edges = EDGES.length;
-  STATS.critical = CRITICAL.length;
-}
+export const CRITICAL = RANKED.filter((m) => m.rippleScore > 0.7);
 
 export interface BlastRadius {
   compromised: string;

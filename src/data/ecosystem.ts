@@ -5,10 +5,6 @@ export interface EcoNode {
   name: string;
   version: string;
   type: NodeType;
-  /** ISO date of the last publish on the registry, when known */
-  lastPublished?: string;
-  description?: string;
-  license?: string;
 }
 
 export interface EcoEdge {
@@ -107,7 +103,7 @@ export const NODE_BY_ID: Record<string, EcoNode> = Object.fromEntries(
   NODES.map((n) => [n.id, n]),
 );
 
-export const APPLICATIONS: EcoNode[] = NODES.filter((n) => n.type === "application");
+export const APPLICATIONS = NODES.filter((n) => n.type === "application");
 
 /** Known safe alternatives used by the Compare view. */
 export const ALTERNATIVES: Record<string, string> = {
@@ -145,73 +141,4 @@ export function nodeOf(id: string): EcoNode {
   const n = NODE_BY_ID[id];
   if (!n) throw new Error(`Unknown package: ${id}`);
   return n;
-}
-
-/** Approximate real registry publish dates for the bundled demo ecosystem. */
-const DEMO_LAST_PUBLISHED: Record<string, string> = {
-  "lib-express": "2024-10-08",
-  "lib-axios": "2025-05-12",
-  "lib-jsonwebtoken": "2022-12-21",
-  "lib-mongoose": "2025-06-03",
-  "lib-bcrypt": "2023-08-14",
-  "lib-cors": "2018-06-06",
-  "lib-helmet": "2024-11-19",
-  "lib-winston": "2025-02-27",
-  "lib-joi": "2023-04-11",
-  "lib-redis": "2025-01-16",
-  "lib-socket": "2025-03-05",
-  "lib-bull": "2023-09-01",
-  "lib-nodemailer": "2025-04-22",
-  "lib-stripe": "2025-07-01",
-  "found-lodash": "2021-02-20",
-  "found-debug": "2022-03-09",
-  "found-ms": "2022-05-11",
-  "found-semver": "2023-07-25",
-  "found-colors": "2022-01-08",
-  "found-minimist": "2023-02-09",
-  "found-qs": "2023-06-14",
-  "found-safer-buffer": "2018-06-18",
-  "found-inherits": "2017-11-28",
-  "found-depd": "2022-09-22",
-};
-
-for (const n of NODES) {
-  const d = DEMO_LAST_PUBLISHED[n.id];
-  if (d) n.lastPublished = d;
-}
-
-/** Immutable snapshot of the bundled demo ecosystem so users can always return to it. */
-const DEMO_SNAPSHOT = {
-  nodes: NODES.map((n) => ({ ...n })),
-  edges: EDGES.map((e) => ({ ...e })),
-};
-
-export interface EcosystemSource {
-  label: string;
-  /** "demo" | "npm" */
-  kind: "demo" | "npm";
-  roots: string[];
-}
-
-export let SOURCE: EcosystemSource = { label: "Demo ecosystem", kind: "demo", roots: [] };
-
-/** Swap the live ecosystem in place (all derived views read these same objects). */
-export function applyEcosystem(nodes: EcoNode[], edges: EcoEdge[], source: EcosystemSource) {
-  NODES.splice(0, NODES.length, ...nodes.map((n) => ({ ...n })));
-  EDGES.splice(0, EDGES.length, ...edges.map((e) => ({ ...e })));
-  for (const key of Object.keys(NODE_BY_ID)) delete NODE_BY_ID[key];
-  for (const n of NODES) NODE_BY_ID[n.id] = n;
-  APPLICATIONS.splice(
-    0,
-    APPLICATIONS.length,
-    ...NODES.filter((n) => n.type === "application"),
-  );
-  SOURCE = source;
-}
-
-export function demoEcosystem() {
-  return {
-    nodes: DEMO_SNAPSHOT.nodes.map((n) => ({ ...n })),
-    edges: DEMO_SNAPSHOT.edges.map((e) => ({ ...e })),
-  };
 }
