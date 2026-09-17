@@ -24,7 +24,9 @@ export function AiAnalysis() {
           reach: Number(m.reach.toFixed(3)),
           directDependents: m.directDependents.slice(0, 10),
           downstreamCount: m.downstreamCount,
-          affectedApps: blast.affectedApps.map((a) => a.name),
+          affectedApps: blast.affectedApps.map((a) =>
+            typeof a === "string" ? a : (a as { name: string }).name,
+          ),
           maxDepth: blast.maxDepth,
           lastPublished: m.node.lastPublished ?? null,
         };
