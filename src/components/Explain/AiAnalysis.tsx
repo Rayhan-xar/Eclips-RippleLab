@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { Sparkles, Loader2 } from "lucide-react";
-import { APPLICATIONS, nodeOf } from "@/data/ecosystem";
+import { APPLICATIONS } from "@/data/ecosystem";
 import { computeBlastRadius, RANKED, STATS } from "@/utils/graphAnalysis";
 import { generateAnalysis } from "@/lib/ai.functions";
 import { useAppState } from "@/store/appStore";
