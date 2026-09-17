@@ -22,7 +22,7 @@ export function AiAnalysis() {
           degree: Number(m.degree.toFixed(3)),
           betweenness: Number(m.betweenness.toFixed(3)),
           reach: Number(m.reach.toFixed(3)),
-          directDependents: m.directDependents.map((id) => nodeOf(id).name).slice(0, 10),
+          directDependents: m.directDependents.slice(0, 10),
           downstreamCount: m.downstreamCount,
           affectedApps: blast.affectedApps.map((a) => a.name),
           maxDepth: blast.maxDepth,
