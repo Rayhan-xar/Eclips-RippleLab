@@ -1,3 +1,25 @@
+# 🌊 RippleLab Dashboard (Manipal Hackathon Submission)
+> **🚀 Live Demo:** (  https://dependency-sonar.lovable.app/ )
+## 📌 About The Project
+RippleLab is a project built for the Manipal Hackathon. *("It is based on Dependency Risk Intelligence & Simulation").*
+### 💡 Our Solution
+*(Modern applications sit atop deeply nested open-source packages. A single vulnerability in a low-level dependency can propagate silently through the entire chain, yet traditional scanners only surface isolated risks, not ecosystem-wide ripple effects. )*
+---
+## 🛠️ Built With
+* [Lovable](https://lovable.dev/) - AI web builder
+* React
+* Vite
+* Tailwind CSS
+
+---
+## 👨‍💻 Team
+* **Mohammed Rayhan** - [GitHub Profile](https://github.com/Rayhan-xar)
+* *Team Members 
+* (Mukund S Belawadi)
+* (Maahi Sachin Nale)
+* (Aisiri Rajesh)
+* (Poorvashree S)
+
 # RippleLab Dashboard
 
 ┌──────────────────────────────────────────────────────┐
