@@ -1,8 +1,6 @@
 import { APPLICATIONS, NODES, nodeOf } from "@/data/ecosystem";
 import { computeBlastRadius } from "@/utils/graphAnalysis";
 
-const PACKAGES = NODES.filter((n) => n.type !== "application");
-
 function cellFor(depth: number | null) {
   if (depth === null) return { cls: "bg-mitigated/15", label: "—" };
   if (depth <= 2) return { cls: "bg-critical/70", label: String(depth) };
@@ -10,6 +8,7 @@ function cellFor(depth: number | null) {
 }
 
 export function RiskHeatMap() {
+  const PACKAGES = NODES.filter((n) => n.type !== "application").slice(0, 40);
   const matrix = PACKAGES.map((p) => {
     const blast = computeBlastRadius(p.id);
     return {
