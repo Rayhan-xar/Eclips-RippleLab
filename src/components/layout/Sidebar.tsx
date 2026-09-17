@@ -36,15 +36,15 @@ export function Sidebar() {
     <aside
       className={cn(
         "sticky top-0 z-30 flex h-screen shrink-0 flex-col border-r border-border bg-surface/60 backdrop-blur-xl transition-[width] duration-300",
-        collapsed ? "w-[76px]" : "w-64",
+        collapsed ? "w-16 sm:w-[76px]" : "w-16 sm:w-64",
       )}
     >
-      <div className="flex items-center gap-3 px-5 py-6">
+      <div className="flex items-center justify-center gap-3 px-3 py-6 sm:justify-start sm:px-5">
         <span className="relative flex size-9 items-center justify-center rounded-xl bg-safe/15 text-safe">
           <RippleLogo className="size-6" />
         </span>
         {!collapsed && (
-          <div className="leading-tight">
+          <div className="hidden leading-tight sm:block">
             <p className="text-base font-semibold tracking-tight">RippleLab</p>
             <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
               Supply chain risk
@@ -59,13 +59,13 @@ export function Sidebar() {
             key={to}
             to={to}
             activeOptions={{ exact: to === "/" }}
-            className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground"
+            className="group flex items-center justify-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground sm:justify-start"
             activeProps={{
               className: "bg-safe/12 text-safe ring-1 ring-safe/25",
             }}
           >
             <Icon className="size-[18px] shrink-0" />
-            {!collapsed && <span>{label}</span>}
+            {!collapsed && <span className="hidden sm:inline">{label}</span>}
           </Link>
         ))}
       </nav>
@@ -73,7 +73,7 @@ export function Sidebar() {
       <div className="px-3 pb-4">
         <button
           onClick={() => setCollapsed((v) => !v)}
-          className="mb-3 flex w-full items-center gap-3 rounded-xl px-3 py-2 text-xs text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground"
+          className="mb-3 hidden w-full items-center gap-3 rounded-xl px-3 py-2 text-xs text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground sm:flex"
         >
           {collapsed ? (
             <PanelLeftOpen className="size-[18px]" />
@@ -84,7 +84,7 @@ export function Sidebar() {
           )}
         </button>
         {!collapsed && (
-          <div className="rounded-xl border border-border bg-background/40 p-3">
+          <div className="hidden rounded-xl border border-border bg-background/40 p-3 sm:block">
             <p className="text-xs font-semibold">Team ECLIPSE</p>
             <p className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground">
               MIT Manipal

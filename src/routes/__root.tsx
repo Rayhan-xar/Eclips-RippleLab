@@ -125,7 +125,7 @@ function RootComponent() {
       <Splash />
       <div className="aurora flex min-h-screen bg-background">
         <Sidebar />
-        <main className="min-w-0 flex-1 px-5 py-8 sm:px-8">
+        <main className="min-w-0 flex-1 px-3 py-6 sm:px-8 sm:py-8">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
         </main>
