@@ -80,7 +80,7 @@ function SimulatePage() {
         description="Pick a package, detonate it, and follow the shockwave upstream through every package that transitively depends on it."
       />
 
-      <div className="grid min-w-0 gap-6 xl:grid-cols-[300px_minmax(0,1fr)] min-[1900px]:grid-cols-[320px_minmax(0,1fr)_380px]">
+      <div className="grid min-w-0 gap-10 2xl:grid-cols-[320px_minmax(0,1fr)] 2xl:items-start">
         <div className="min-w-0">
           <SimulationControls
             targetId={targetId}
@@ -114,7 +114,8 @@ function SimulatePage() {
               edgeStateFor={edgeStateFor}
               pulseIds={pulseIds}
               selectedId={active ? state.blast!.compromised : null}
-              height={620}
+              height={520}
+              className="sm:min-h-[560px] 2xl:min-h-[620px]"
             />
           </div>
           <div className="mt-4">
@@ -122,7 +123,7 @@ function SimulatePage() {
           </div>
         </section>
 
-        <div className="min-w-0 xl:col-span-2 min-[1900px]:col-span-1">
+        <div className="min-w-0 2xl:col-span-2">
           {state.blast && state.done ? (
             <BlastRadiusPanel blast={state.blast} />
           ) : (
