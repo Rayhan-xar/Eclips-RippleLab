@@ -80,22 +80,24 @@ function SimulatePage() {
         description="Pick a package, detonate it, and follow the shockwave upstream through every package that transitively depends on it."
       />
 
-      <div className="grid gap-6 xl:grid-cols-[320px_1fr_380px]">
-        <SimulationControls
-          targetId={targetId}
-          onTarget={(id) => {
-            reset();
-            setTarget(id);
-          }}
-          speed={speed}
-          onSpeed={setSpeed}
-          running={state.running}
-          onRun={() => run(targetId, speed, () => markSimulated(targetId))}
-          onReset={reset}
-        />
+      <div className="grid min-w-0 gap-6 xl:grid-cols-[300px_minmax(0,1fr)] min-[1900px]:grid-cols-[320px_minmax(0,1fr)_380px]">
+        <div className="min-w-0">
+          <SimulationControls
+            targetId={targetId}
+            onTarget={(id) => {
+              reset();
+              setTarget(id);
+            }}
+            speed={speed}
+            onSpeed={setSpeed}
+            running={state.running}
+            onRun={() => run(targetId, speed, () => markSimulated(targetId))}
+            onReset={reset}
+          />
+        </div>
 
-        <section className="glass rounded-2xl p-5">
-          <div className="flex items-center justify-between">
+        <section className="glass min-w-0 rounded-2xl p-4 sm:p-5">
+          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
               {active ? "Simulation mode" : "Standby"}
             </h2>
@@ -105,7 +107,7 @@ function SimulatePage() {
               </span>
             ) : null}
           </div>
-          <div className="mt-4 overflow-hidden rounded-xl border border-border bg-background/40">
+          <div className="mt-4 min-w-0 overflow-hidden rounded-xl border border-border bg-background/40">
             <RippleGraph
               colorFor={colorFor}
               dimFor={dimFor}
@@ -120,7 +122,7 @@ function SimulatePage() {
           </div>
         </section>
 
-        <div>
+        <div className="min-w-0 xl:col-span-2 min-[1900px]:col-span-1">
           {state.blast && state.done ? (
             <BlastRadiusPanel blast={state.blast} />
           ) : (

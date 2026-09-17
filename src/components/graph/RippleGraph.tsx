@@ -166,7 +166,7 @@ export function RippleGraph({
   const resetView = () => fgRef.current?.zoomToFit(600, 60);
 
   return (
-    <div ref={wrapRef} className="relative w-full" style={{ height }}>
+    <div ref={wrapRef} className="relative min-w-0 max-w-full overflow-hidden" style={{ height }}>
       <button
         onClick={resetView}
         className="absolute right-3 top-3 z-10 inline-flex items-center gap-2 rounded-lg border border-border bg-surface/80 px-3 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur transition-colors hover:text-foreground"
