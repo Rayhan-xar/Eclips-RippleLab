@@ -5,6 +5,7 @@ import { metricsOf, RANKED } from "@/utils/graphAnalysis";
 import { TYPE_COLOR, COLORS } from "@/lib/colors";
 import { PageHeader } from "@/components/layout/Header";
 import { StatsBar } from "@/components/Dashboard/StatsBar";
+import { EcosystemImport } from "@/components/Dashboard/EcosystemImport";
 import { SearchBar } from "@/components/Dashboard/SearchBar";
 import { NodeDetail } from "@/components/Dashboard/NodeDetail";
 import { RippleGraph, GraphLegend } from "@/components/graph/RippleGraph";
@@ -57,6 +58,8 @@ function Dashboard() {
         title="Dependency risk dashboard"
         description="A live map of 30 packages across application, library and foundational tiers. Node size scales with Ripple Score — the bigger the node, the wider the damage if it falls."
       />
+
+      <EcosystemImport />
 
       <StatsBar />
 

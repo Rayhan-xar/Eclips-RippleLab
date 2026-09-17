@@ -5,6 +5,8 @@ import { PageHeader } from "@/components/layout/Header";
 import { ExecutiveSummary } from "@/components/Explain/ExecutiveSummary";
 import { CriticalRanking } from "@/components/Explain/CriticalRanking";
 import { RiskHeatMap } from "@/components/Explain/RiskHeatMap";
+import { AiAnalysis } from "@/components/Explain/AiAnalysis";
+import { ThreatTimeline } from "@/components/Explain/ThreatTimeline";
 import { MitigationPriorities } from "@/components/Explain/MitigationPriorities";
 import { RANKED } from "@/utils/graphAnalysis";
 import { executiveSummary, mitigationPriorities, packageNarrative } from "@/utils/explanations";
@@ -87,6 +89,10 @@ function ExplainPage() {
 
       <ExecutiveSummary />
       <CriticalRanking />
+      <AiAnalysis />
+
+      <ThreatTimeline />
+
       <RiskHeatMap />
 
       <section className="glass rounded-2xl p-6">
